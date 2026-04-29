@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p blog assets)",
+      "Bash(cp html/port.html index.html)",
+      "Bash(cp html/note_1.html blog/forgotten-machine.html)",
+      "Bash(cp html/note_2.html blog/five-cent-heist.html)"
+    ]
+  }
+}

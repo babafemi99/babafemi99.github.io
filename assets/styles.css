@@ -1,0 +1,30 @@
+/* Shared design tokens and base styles.
+   Each page currently ships its own <style> block tuned for its layout;
+   this file is the place to consolidate anything you want to reuse
+   across new posts you add. */
+
+:root {
+    --bg: #f4f1ea;
+    --ink: #1a1a1a;
+    --muted: #6b6660;
+    --rule: #d8d3ca;
+    --accent: #b85c38;
+    --serif: "Newsreader", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a { color: var(--ink); }
+a:hover { color: var(--accent); }

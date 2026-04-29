@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Five-Cent Heist — Oreoluwa Oloniyo</title>
+    <meta name="description" content="A 2.5-hour compromise. 2 billion weekly downloads. Five cents stolen. Here's why that should terrify you." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #f4f1ea;
+            --ink: #1a1a1a;
+            --muted: #6b6660;
+            --rule: #d8d3ca;
+            --accent: #b85c38;
+            --serif: "Newsreader", Georgia, serif;
+            --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 19px;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .wrap {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 64px 32px 120px;
+        }
+
+        /* ---------- Top nav ---------- */
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 56px;
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        .topnav a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+
+        .topnav a:hover { color: var(--accent); }
+
+        .topnav .back::before { content: "← "; }
+
+        /* ---------- Article header ---------- */
+        .post-meta {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .post-meta .num { color: var(--accent); }
+
+        .series-tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            padding: 4px 10px;
+            margin-bottom: 28px;
+            border-radius: 2px;
+        }
+
+        h1.title {
+            font-family: var(--serif);
+            font-size: 52px;
+            line-height: 1.05;
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            margin-bottom: 18px;
+        }
+
+        .subtitle {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-style: italic;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 56px;
+            line-height: 1.4;
+        }
+
+        /* ---------- Article body ---------- */
+        article p {
+            margin-bottom: 24px;
+            color: #2a2a2a;
+        }
+
+        article p:first-of-type::first-letter {
+            font-family: var(--serif);
+            font-size: 64px;
+            font-weight: 500;
+            float: left;
+            line-height: 0.9;
+            margin: 6px 10px 0 0;
+            color: var(--accent);
+        }
+
+        article em { font-style: italic; color: var(--ink); }
+        article strong { font-weight: 500; }
+
+        article h2 {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.015em;
+            margin: 56px 0 20px;
+            line-height: 1.25;
+        }
+
+        article h2 .num {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .pullquote {
+            font-family: var(--serif);
+            font-size: 26px;
+            line-height: 1.35;
+            font-style: italic;
+            color: var(--ink);
+            border-left: 2px solid var(--accent);
+            padding: 8px 0 8px 28px;
+            margin: 44px 0;
+            max-width: 92%;
+        }
+
+        /* ---------- Stat callouts ---------- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 32px 0 40px;
+            padding: 28px 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .stat .num {
+            font-family: var(--serif);
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat .label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        /* ---------- Code ---------- */
+        pre {
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.6;
+            background: #ebe6dc;
+            color: #2a2a2a;
+            padding: 20px 24px;
+            overflow-x: auto;
+            margin: 28px 0;
+            border-left: 2px solid var(--accent);
+        }
+
+        code {
+            font-family: var(--mono);
+            font-size: 0.88em;
+            background: #ebe6dc;
+            padding: 2px 6px;
+            color: #1a1a1a;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        /* ---------- Section break ---------- */
+        hr.section-break {
+            border: none;
+            margin: 44px auto;
+            text-align: center;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 14px;
+            letter-spacing: 0.4em;
+        }
+
+        hr.section-break::before { content: "· · ·"; }
+
+        .closer {
+            font-family: var(--serif);
+            font-size: 22px;
+            line-height: 1.45;
+            color: var(--ink);
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rule);
+            font-style: italic;
+        }
+
+        /* ---------- Series box ---------- */
+        .series-box {
+            margin-top: 56px;
+            padding: 28px;
+            background: #ebe6dc;
+            border-left: 2px solid var(--accent);
+        }
+
+        .series-box .label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .series-box h3 {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .series-box p {
+            font-size: 15px;
+            color: #3a3a3a;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .series-box .next {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .series-box .next strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        /* ---------- Footer ---------- */
+        .post-footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rule);
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .post-footer .signature {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--ink);
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .post-footer a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--rule);
+            transition: border-color 180ms ease, color 180ms ease;
+        }
+
+        .post-footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+        .next-prev {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--rule);
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        .next-prev a { color: var(--muted); text-decoration: none; transition: color 180ms ease; }
+        .next-prev a:hover { color: var(--accent); }
+
+        /* ---------- Reveal ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(8px);
+            animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+        }
+
+        @keyframes rise {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 600px) {
+            .wrap { padding: 40px 22px 80px; }
+            body { font-size: 17px; }
+            h1.title { font-size: 36px; }
+            .subtitle { font-size: 18px; margin-bottom: 40px; }
+            article h2 { font-size: 23px; }
+            .pullquote { font-size: 20px; padding-left: 20px; }
+            .closer { font-size: 19px; }
+            .stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .stat .num { font-size: 26px; }
+            pre { font-size: 12px; padding: 14px 16px; }
+            article p:first-of-type::first-letter { font-size: 52px; }
+            .topnav { flex-direction: column; gap: 6px; align-items: flex-start; }
+            .series-box { padding: 22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <nav class="topnav reveal">
+        <a href="../index.html" class="back">Index</a>
+        <span style="color: var(--muted);">Notes · 002</span>
+    </nav>
+
+    <div class="post-meta reveal"><span class="num">002</span> &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 9 min read</div>
+
+    <span class="series-tag reveal">Security in the AI Era · Part 1</span>
+
+    <h1 class="title reveal">The Five-Cent Heist</h1>
+    <p class="subtitle reveal">2 billion weekly downloads. 2.5 hours of access. A flawless attack that stole almost nothing — and that's exactly the problem.</p>
+
+    <article class="reveal">
+
+        <p>
+            On September 8, 2025, at around 9:30 AM Eastern, somebody phished an open-source maintainer named Josh Junon and walked away with the keys to roughly two billion weekly downloads. They had two and a half hours of full publishing access to packages that sit underneath nearly every JavaScript application on Earth — <code>chalk</code>, <code>debug</code>, <code>ansi-styles</code>, eighteen others. They pushed malicious updates. The malicious updates spread automatically to anyone who ran <code>npm install</code> during that window. By every reasonable measure, the attack worked.
+        </p>
+
+        <p>
+            The attackers stole roughly five cents.
+        </p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="num">2B+</div>
+                <div class="label">Weekly downloads of compromised packages</div>
+            </div>
+            <div class="stat">
+                <div class="num">~2.5h</div>
+                <div class="label">Time the malicious versions were live</div>
+            </div>
+            <div class="stat">
+                <div class="num">$0.05</div>
+                <div class="label">Approximate value stolen on-chain</div>
+            </div>
+            <div class="stat">
+                <div class="num">1</div>
+                <div class="label">Phishing email that started it all</div>
+            </div>
+        </div>
+
+        <p>
+            That ratio should make every backend engineer pause. The largest supply-chain attack in npm's history was a technical success and a financial failure. Which means the next one — the one designed by someone who's read this post-mortem — won't have the same problem.
+        </p>
+
+        <p>
+            I want to walk through what actually happened, because the mechanics matter. Then I want to talk about what AI is doing to both sides of this equation, because that's the part nobody is being honest about.
+        </p>
+
+        <h2><span class="num">01 / What happened</span>How the attack actually worked</h2>
+
+        <p>
+            The entry point was email. Junon — known on npm as <code>qix</code> — received a message from <code>support@npmjs.help</code>, a domain registered three days earlier. The pretext was a 2FA reset; the deadline was September 10. Click here, log in, update your authenticator, or your account will be locked. He clicked. He typed his password. He typed his TOTP code.
+        </p>
+
+        <p>
+            The phishing page wasn't passive. It was an <em>adversary-in-the-middle</em> setup — the credentials and the live 2FA token were forwarded to npm in real time, completing a legitimate login on the attacker's machine before the code expired. By the time Junon realized what had happened, the attackers were authenticated as him.
+        </p>
+
+        <p>
+            Then they got to work. Within minutes, they pushed minor-version bumps to every package <code>qix</code> maintained or co-maintained. Each new version contained a small, obfuscated payload injected into the entry point of the package — typically <code>index.js</code>. The payload was browser-only and surgical: it hooked into <code>window.ethereum</code>, <code>fetch</code>, and <code>XMLHttpRequest</code>, watched for cryptocurrency transactions, and swapped destination wallet addresses with attacker-controlled ones. It used a Levenshtein-distance algorithm to pick replacement addresses that <em>looked similar</em> to the original — so a user glancing at their wallet UI before signing would see something close enough to miss.
+        </p>
+
+        <p>
+            Multi-chain support: Ethereum, Bitcoin, Solana, Tron, Litecoin, Bitcoin Cash. Hundreds of hardcoded attacker wallets for redundancy. The payload had clearly been written by someone who understood crypto rails. This was not an opportunistic teenager.
+        </p>
+
+        <p>
+            The reason it almost made nothing: the payload only fired in the browser, on dApp users actively signing transactions, during the exact 2.5-hour window. The blast radius was theoretically two billion downloads per week; the realized radius was a tiny slice of users who happened to be both running a freshly-installed bundle and signing a crypto transaction in that window. Aikido Security caught the anomaly within five minutes of the first publish. npm pulled the packages in under three hours.
+        </p>
+
+        <div class="pullquote">
+            The attackers built a Ferrari to rob a vending machine. Next time, they'll build a Ferrari to rob a bank.
+        </div>
+
+        <h2><span class="num">02 / What's actually scary</span>The dress rehearsal problem</h2>
+
+        <p>
+            Here is the thing nobody wants to say out loud: this attack <em>worked</em>. Every part of the kill chain executed. The phishing got past a careful, technical maintainer. The 2FA bypass worked. The publishing pipeline accepted the malicious versions. The package manager distributed them globally in minutes. Millions of CI runs and developer machines pulled the poisoned code. The only thing that "failed" was the monetization, and only because the attackers chose a payload whose surface area was narrow.
+        </p>
+
+        <p>
+            Swap the payload. Imagine instead of a wallet-drainer, the malicious code was a credential harvester that grepped <code>~/.aws/credentials</code>, <code>.env</code> files, GitHub tokens, and SSH keys, and exfiltrated them to an attacker server. Or a sleeper that did nothing for thirty days and then opened a reverse shell. Or a worm — and we don't have to imagine that one, because <strong>Shai-Hulud</strong> already happened in the same month: a self-replicating npm payload that stole credentials, used them to publish more compromised packages, and propagated automatically. Five hundred packages. The "nuisance era" of supply-chain attacks ended in September 2025. We are living in what comes after.
+        </p>
+
+        <p>
+            The September attack on <code>qix</code> was not a failure. It was a rehearsal. Anyone with the patience to read the published post-mortems now has a tested playbook: target an under-resourced maintainer of a foundational package, send a 2FA-reset phishing email from a typosquatted domain, capture credentials via AitM, publish minor-version bumps with a payload of your choosing, profit before anyone notices.
+        </p>
+
+        <h2><span class="num">03 / The AI multiplier</span>Both sides are getting faster</h2>
+
+        <p>
+            I want to be careful here, because "AI is making security worse" has become the kind of statement people nod along to without examining. So let me be specific about what AI is actually doing in this space, on both sides of the line.
+        </p>
+
+        <p>
+            <strong>For attackers:</strong> phishing has become near-zero-cost. The <code>npmjs.help</code> email that fooled Junon was already convincing. With an LLM, every phishing email can be individually tailored — referencing the maintainer's recent commits, their employer, the specific packages they steward, in their idiomatic English. The one-size-fits-all phishing template is dead; bespoke is the new default. Code obfuscation is also getting cheaper. The September payload was hand-obfuscated; the next one will be machine-mutated, producing a different-looking variant for every download.
+        </p>
+
+        <p>
+            <strong>For defenders:</strong> static analysis is also getting better. Anomaly detection across npm publishes — the kind of thing Aikido did in five minutes — is exactly the use case ML is good at. Diffing a new version against the previous one and flagging "this minor version added a 4KB IIFE that hooks <code>window.ethereum</code>" is mechanical work that LLMs do well.
+        </p>
+
+        <p>
+            But there is an asymmetry, and it is not in our favor. The attacker only needs to win <em>once</em>. The defender needs to win <em>every</em> publish, across <em>every</em> package, in <em>every</em> ecosystem. AI raises the floor on both sides, but the attacker's job — finding one tired maintainer at 2:50 AM their local time — was already easier than the defender's job. AI doesn't change the asymmetry; it just speeds up both clocks.
+        </p>
+
+        <p>
+            And then there is the meta-problem: more and more developers are pasting code into LLMs, accepting suggestions without reading them, and shipping AI-generated dependencies they haven't vetted. Every one of those interactions is a potential vector — for prompt injection, for data exfiltration through a poisoned model, for accepting a "fix" that quietly imports a typosquatted package. We are weaving a new attack surface into our daily workflow and pretending it's a productivity tool.
+        </p>
+
+        <h2><span class="num">04 / What you do on Monday</span>The hygiene that would have blocked this</h2>
+
+        <p>
+            If you take nothing else from this post: the September attack would have been substantially harder if a few basic, boring practices were universal. None of them are novel. All of them are unevenly adopted. Here is the working list, ordered by leverage.
+        </p>
+
+        <p>
+            <strong>1. Lockfile discipline, religiously.</strong> If your CI installs from <code>package.json</code> instead of <code>package-lock.json</code> or <code>pnpm-lock.yaml</code>, you are pulling whatever was published most recently — including the malicious version published 90 seconds ago. Use <code>npm ci</code>, not <code>npm install</code>. Pin exact versions. Commit your lockfile. This single change would have shielded most production systems during the September window.
+        </p>
+
+        <p>
+            <strong>2. Delay the upgrade.</strong> Tools like Renovate and Dependabot let you set a <em>cooldown</em> — don't auto-merge a dependency update until the version has been published for at least 72 hours. The September malicious versions were live for 2.5 hours and pulled within minutes. A 72-hour quarantine would have caught all of them.
+        </p>
+
+        <p>
+            <strong>3. Disable lifecycle scripts where you can.</strong> Most supply-chain payloads run via <code>postinstall</code> or similar lifecycle hooks. Set <code>--ignore-scripts</code> in CI for everything except the dependencies you genuinely need to run them. This won't catch browser-side payloads like the September one, but it will block most credential-stealers.
+        </p>
+
+        <p>
+            <strong>4. SBOM, then act on it.</strong> Generate a Software Bill of Materials for every build. The point is not the document — the point is that when a CVE drops at 2 AM your time, you can answer "are we affected?" in five minutes instead of two days. If your answer to that question right now is <em>I'm not sure</em>, you have homework.
+        </p>
+
+        <p>
+            <strong>5. Hardware 2FA on every publishing account.</strong> AitM phishing defeats TOTP — it cannot defeat WebAuthn / hardware keys, because the cryptographic challenge is bound to the actual domain. If Junon had been on a YubiKey, the September attack would have stopped at the login prompt. npm now offers Trusted Publisher and stronger 2FA options. Use them.
+        </p>
+
+        <p>
+            None of this is exciting. None of it is the kind of thing you put on a roadmap. All of it would have measurably blunted the largest supply-chain attack in history.
+        </p>
+
+        <hr class="section-break" />
+
+        <p class="closer">
+            The five cents the attackers made in September 2025 is the most expensive five cents in software history. Not because of what was stolen, but because of what was proved: that the supply chain is wide open, that a single phishing email can poison two billion downloads a week, and that the only thing standing between us and a much worse outcome next time is whether the next attacker has better aim. <br /><br />
+            They will. Plan accordingly.
+        </p>
+
+        <div class="series-box">
+            <div class="label">Security in the AI Era</div>
+            <h3>This is post 1 of an ongoing series.</h3>
+            <p>
+                I'm working through how AI is reshaping security on both sides — what's getting attacked, what's getting harder to defend, and what working engineers should actually do about it. Real breaches, real code, real mitigations.
+            </p>
+            <div class="next">Next — <strong>Part 2: Prompt injection in production.</strong> Why the new attack surface isn't your code, it's your context window.</div>
+        </div>
+
+    </article>
+
+    <div class="next-prev">
+        <a href="forgotten-machine.html">← Previous: The Forgotten Machine</a>
+        <a href="index.html">All notes</a>
+    </div>
+
+    <footer class="post-footer">
+        <div class="signature">Oreoluwa Oloniyo</div>
+        <div>Backend engineer in Lagos · <a href="../index.html">portfolio</a></div>
+    </footer>
+
+</div>
+</body>
+</html>

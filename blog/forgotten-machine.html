@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Forgotten Machine — Oreoluwa Oloniyo</title>
+    <meta name="description" content="On abstraction, AI, and what GeoCities can teach us about the next bubble." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #f4f1ea;
+            --ink: #1a1a1a;
+            --muted: #6b6660;
+            --rule: #d8d3ca;
+            --accent: #b85c38;
+            --serif: "Newsreader", Georgia, serif;
+            --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 19px;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .wrap {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 64px 32px 120px;
+        }
+
+        /* ---------- Top nav ---------- */
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 56px;
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        .topnav a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+
+        .topnav a:hover { color: var(--accent); }
+
+        .topnav .back::before {
+            content: "← ";
+        }
+
+        .topnav .meta { color: var(--muted); }
+
+        /* ---------- Article header ---------- */
+        .post-meta {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .post-meta .num { color: var(--accent); }
+
+        h1.title {
+            font-family: var(--serif);
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+        }
+
+        .subtitle {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-style: italic;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 48px;
+        }
+
+        .subtitle::before {
+            content: "— ";
+        }
+
+        /* ---------- Article body ---------- */
+        article p {
+            margin-bottom: 24px;
+            color: #2a2a2a;
+        }
+
+        article p:first-of-type::first-letter {
+            font-family: var(--serif);
+            font-size: 64px;
+            font-weight: 500;
+            float: left;
+            line-height: 0.9;
+            margin: 6px 10px 0 0;
+            color: var(--accent);
+        }
+
+        article em {
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        article strong {
+            font-weight: 500;
+        }
+
+        .pullquote {
+            font-family: var(--serif);
+            font-size: 24px;
+            line-height: 1.4;
+            font-style: italic;
+            color: var(--ink);
+            border-left: 2px solid var(--accent);
+            padding: 8px 0 8px 28px;
+            margin: 40px 0;
+            max-width: 90%;
+        }
+
+        hr.section-break {
+            border: none;
+            margin: 48px auto;
+            text-align: center;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 14px;
+            letter-spacing: 0.4em;
+        }
+
+        hr.section-break::before {
+            content: "· · ·";
+        }
+
+        .closer {
+            font-family: var(--serif);
+            font-size: 22px;
+            line-height: 1.45;
+            color: var(--ink);
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rule);
+            font-style: italic;
+        }
+
+        /* ---------- Footer ---------- */
+        .post-footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rule);
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .post-footer .signature {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--ink);
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .post-footer a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--rule);
+            transition: border-color 180ms ease, color 180ms ease;
+        }
+
+        .post-footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+        .next-prev {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--rule);
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        /* ---------- Reveal ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(8px);
+            animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+        }
+
+        @keyframes rise {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 600px) {
+            .wrap { padding: 40px 22px 80px; }
+            body { font-size: 17px; }
+            h1.title { font-size: 34px; }
+            .subtitle { font-size: 17px; margin-bottom: 36px; }
+            .pullquote { font-size: 19px; padding-left: 20px; }
+            .closer { font-size: 19px; }
+            article p:first-of-type::first-letter { font-size: 52px; }
+            .topnav { flex-direction: column; gap: 6px; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <nav class="topnav reveal">
+        <a href="../index.html" class="back">Index</a>
+        <span class="meta">Notes · 001</span>
+    </nav>
+
+    <div class="post-meta reveal"><span class="num">001</span> &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 6 min read</div>
+
+    <h1 class="title reveal">The Forgotten Machine</h1>
+    <p class="subtitle reveal">on abstraction, and the bill that always comes due</p>
+
+    <article class="reveal">
+
+        <p>
+            In November 1994, GeoCities launched. Anybody could build a website. Anybody. The templates were limited, but within a few minutes you could have your business on the internet. By the late 90s, nearly 38 million pages had been published on the platform. In January 1999, Yahoo bought it for $3.57 billion in stock — right at the peak of the dot-com bubble. For a moment, it looked like the future of the web was free, fast, and frictionless.
+        </p>
+
+        <p>
+            It wasn't. GeoCities collapsed under its own success. Every site looked the same. Yours was indistinguishable from the other 38 million. Anyone could clone you in minutes — competitors, scammers, anyone. The human appetite for distinction came barging back through the door, and businesses started paying 5x, 10x more for custom-built sites that actually looked professional. The platform that promised democratization quietly created a class of developers who got rich precisely because they could do what the platform couldn't: build something real.
+        </p>
+
+        <p>
+            I think about this story often, because the modern developer experience rhymes with it.
+        </p>
+
+        <hr class="section-break" />
+
+        <p>
+            We live in the era of abstraction. We ship faster than ever. One-click deploys, managed databases, frameworks on top of frameworks. Most of the time, we don't actually know what's happening underneath. Could you set up a server from scratch today? A cluster? Run a service off the grid?
+        </p>
+
+        <p>
+            I'm not asking rhetorically. I'm asking because the answers matter. Most of us — and I'll include myself on the bad days — don't really understand memory layouts. We don't think about how strings, images, and video become bytes on a wire. We talk about JSON and gRPC and WebSockets without much grasp of the protocols carrying them. We use databases without thinking about offsets, page sizes, or what an I/O operation actually costs. We invoke <em>cryptography</em> as if it were an import statement.
+        </p>
+
+        <p>
+            And yet — without that understanding, how do we optimize? How do we deliver better systems? How do we know when the abstraction is lying to us?
+        </p>
+
+        <div class="pullquote">
+            Abstraction enhances productivity, but mostly at the expense of understanding.
+        </div>
+
+        <p>
+            You can't entirely blame us. It's the times. The tools are too good and the deadlines are too tight to read the OSTEP book cover to cover. But if we don't self-reflect, abstraction will be the thing that hollows us out — at least until the cycle completes. And we are about to take it one level higher with AI.
+        </p>
+
+        <hr class="section-break" />
+
+        <p>
+            Here's the question that should keep working engineers up at night: <strong>if everyone is abstracting, who builds the next abstraction?</strong>
+        </p>
+
+        <p>
+            Somebody has to know what's happening in the registers. Somebody has to understand that whether you call it NoSQL or SQL, the OS is doing the same fundamental thing — putting data in, taking data out, across RAM and disk and cache and CPU. The machine hasn't changed. It hasn't changed in fifty years. We changed.
+        </p>
+
+        <p>
+            This is exactly what happened to GeoCities. The platform raised the floor — anybody could publish. But it also flattened the ceiling. Everyone looked the same. The value migrated to the people who could go below the abstraction and build something the platform couldn't replicate. The engineers who knew HTML, CSS, the DOM, the network — they got paid. The people who only knew the GeoCities builder didn't.
+        </p>
+
+        <p>
+            AI is doing the same thing right now, on a much larger scale. The floor is rising. Anyone can ship a CRUD app this weekend with a few prompts. The question isn't whether that's good or bad — it's where the value goes when the floor rises. And the answer, historically, is the same answer every time: it goes to the people who understand the layer below the abstraction, because they're the ones who can fix it when it breaks, extend it when it can't do something, and replace it when it goes obsolete.
+        </p>
+
+        <p class="closer">
+            In every gold rush, there are three positions. You can be the gold. You can be the miner. You can sell the shovels. <br /><br />
+            Just don't be the gold rush.
+        </p>
+
+    </article>
+
+    <div class="next-prev">
+        <a href="index.html" style="color: var(--muted); text-decoration: none;">← All notes</a>
+        <a href="five-cent-heist.html" style="color: var(--muted); text-decoration: none;">Next: The Five-Cent Heist →</a>
+    </div>
+
+    <footer class="post-footer">
+        <div class="signature">Oreoluwa Oloniyo</div>
+        <div>Backend engineer in Lagos · <a href="../index.html">portfolio</a></div>
+    </footer>
+
+</div>
+</body>
+</html>
